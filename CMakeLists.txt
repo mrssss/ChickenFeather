@@ -6,6 +6,8 @@ message(STATUS "CMAKE_SOURCE_DIR: ${CMAKE_SOURCE_DIR}")
 
 include(third_party/CMakeLists.txt)
 
+add_subdirectory(src)
+
 macro (print_all_vars)
     message(STATUS "==========print all variables==========")
     get_cmake_property(_variableNames VARIABLES)
@@ -16,7 +18,7 @@ macro (print_all_vars)
     message(STATUS "==========print all variables==========")
 endmacro()
 
-print_all_vars()
+#print_all_vars()
 
 # Add unit test
 macro (grep_gtest_sources BASE_DIR DST_VAR)
