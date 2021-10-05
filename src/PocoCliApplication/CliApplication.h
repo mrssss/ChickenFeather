@@ -25,7 +25,16 @@ private:
     void reinitialize(Application & app) override;
 
     void defineOptions(OptionSet & options) override;
+
     void handleOption(const std::string & name, const std::string & value) override;
+
+    void handleHelp(const std::string & name, const std::string & value);
+    void displayHelp();
+
+    void handleConfig();
+
+private:
+    bool _helpRequested;
 };
 
 
