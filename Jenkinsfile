@@ -17,7 +17,8 @@ pipeline {
             }
             steps {
                 sh "find ${WORKSPACE}/ \\( -name \"*.cpp\" -or -name \"*.h\" \\) ! -path \"./third_party/*\" | clang-format -style=file -output-replacements-xml | grep -c \"<replacement \" > /dev/null"
-            } post {
+            }
+            post {
                 success {
                     echo "clang-format checking passed."     
                 }
