@@ -3,7 +3,8 @@
 #include <cstdlib>
 #include <iostream>
 
-int main() {
+int main()
+{
     Message say_hello("Hello, CMake World!");
     std::cout << say_hello << std::endl;
 
@@ -12,4 +13,3 @@ int main() {
 
     return EXIT_SUCCESS;
 }
-

@@ -3,6 +3,7 @@
 //
 #include <gtest/gtest.h>
 
-TEST(sample_test_case, T1) {
-    EXPECT_EQ(1, 1);
+TEST(sample_test_case, T1)
+{
+EXPECT_EQ(1, 1);
 }

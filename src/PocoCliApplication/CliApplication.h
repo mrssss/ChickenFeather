@@ -10,9 +10,10 @@
 using Poco::Util::Application;
 using Poco::Util::OptionSet;
 
-class CliApplication : public Application {
+class CliApplication : public Application
+{
 public:
-    CliApplication() {}
+    CliApplication() { }
 
 private:
     const char * name() const override { return "CliApplication"; }
@@ -36,6 +37,5 @@ private:
 private:
     bool _helpRequested;
 };
-
 
 #endif //CHICKENFEATHER_CLIAPPLICATION_H

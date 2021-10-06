@@ -23,7 +23,8 @@
 
 #include "CliApplication.h"
 
-int main(int argc, char ** argv) {
+int main(int argc, char ** argv)
+{
     std::cout << "Hello World" << std::endl;
     auto app = std::make_shared<CliApplication>();
     app->run();
