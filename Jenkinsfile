@@ -18,14 +18,14 @@ pipeline {
                 }
             }
             steps {
-                sh "find ${WORKSPACE}/ \\( -name \"*.cpp\" -or -name \"*.h\" \\) ! -path \"./third_party/*\" | clang-format -style=file -output-replacements-xml | grep -c \"<replacement \" > /dev/null"
+                sh "find ${WORKSPACE}/ \\( -name \"*.cpp\" -or -name \"*.h\" \\) ! -path \"./third_party/*\" | clang-format -style=file -output-replacements-xml | grep -c \"<replacement \" >/dev/null; [ \$? -ne 0 ]"
             }
             post {
                 success {
                     echo "clang-format checking passed."     
                 }
                 failure {
-                    sh "find ${WORKSPACE}/ \\( -name \"*.cpp\" -or -name \"*.h\" \\) ! -path \"./third_party/*\" | clang-format -style=file > clang-format.log"
+                    sh "find ${WORKSPACE}/ \\( -name \"*.cpp\" -or -name \"*.h\" \\) ! -path \"./third_party/*\" | xargs clang-format -style=file > clang-format.log"
                     archive "clang-format.log"
                 }
             }
