@@ -25,7 +25,7 @@ pipeline {
                     echo "clang-format checking passed."     
                 }
                 failure {
-                    sh "find ${WORKSPACE}/ \\( -name \"*.cpp\" -or -name \"*.h\" \\) ! -path \"./third_party/*\" | xargs clang-format -style=file -dry-run > clang-format.log"
+                    sh "find ${WORKSPACE}/ \\( -name \"*.cpp\" -or -name \"*.h\" \\) ! -path \"./third_party/*\" | xargs clang-format -style=file -dry-run &>> clang-format.log"
                     archive "clang-format.log"
                 }
             }
