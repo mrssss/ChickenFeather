@@ -11,7 +11,9 @@ pipeline {
         stage ("Do you run clang-format ?") {
             agent {
                 docker {
-                    image "yandex/clickhouse-binary-builder"
+                    image "47.90.255.243:6789/daisy/binary-builder"
+                    registryUrl "http://47.90.255.243:6789"
+                    registryCredentialsId 'private-docker'
                     reuseNode true
                 }
             }
