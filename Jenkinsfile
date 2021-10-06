@@ -17,13 +17,16 @@ pipeline {
             }
             steps {
                 sh "find ${WORKSPACE}/ \\( -name \"*.cpp\" -or -name \"*.h\" \\) ! -path \"./third_party/*\" | clang-format -style=file -output-replacements-xml | grep -c \"<replacement \" > /dev/null"
+            } post {
+                success {
+                    echo "clang-format checking passed."     
+                }
+                failure {
+                    sh "find ${WORKSPACE}/ \\( -name \"*.cpp\" -or -name \"*.h\" \\) ! -path \"./third_party/*\" | clang-format -style=file > clang-format.log"
+                    archive "clang-format.log"
+                }
             }
-        } post {
-            failure {
-                sh "find ${WORKSPACE}/ \\( -name \"*.cpp\" -or -name \"*.h\" \\) ! -path \"./third_party/*\" | clang-format -style=file > clang-format.log"
-                archive "clang-format.log"
-            }
-        }
+        } 
 
         stage ("Pipeline was Interrupt") {
             steps {
