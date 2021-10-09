@@ -14,7 +14,7 @@ on:
 
 jobs:
   release-docker-image:
-    stratege:
+    strategy:
       fail-fast: false
       matrix:
         image: [builder, style]
