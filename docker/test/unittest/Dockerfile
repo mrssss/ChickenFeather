@@ -3,7 +3,8 @@ FROM qniu/chicken-builder:latest
 
 RUN apt-get update \
     && apt-get install -y \
-        xsltproc
+        xsltproc \
+        --yes --no-install-recommends
 
 COPY gtest2html.xslt /gtest2html.xslt
 COPY run.sh /run.sh

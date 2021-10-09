@@ -11,7 +11,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        image: [chicken-builder, chicken-style]
+        image: [chicken-builder, chicken-style, chicken-unit-test]
         include:
           - image: chicken-builder
             context: docker/builder
@@ -19,8 +19,10 @@ jobs:
           - image: chicken-style
             context: docker/style
             file: docker/style/Dockerfile
+          - image: chicken-unit-test
+            context: docker/test/unittest
+            file: docker/test/unittest/Dockerfile
 
-        
     runs-on: ubuntu-latest
     steps:
       - name: Check Out Repo
