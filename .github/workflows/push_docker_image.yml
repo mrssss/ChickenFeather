@@ -1,16 +1,15 @@
 name: build docker image
 
 on:
-  push:
+  [push, workflow_dispatch]:
     branches:
       - docker
-
-inputs:
-  tag:
-    description: 'docker image tag'
-    default: 'dev'
-    required: true
-    type: string
+    inputs:
+      tag:
+        description: 'docker image tag'
+        default: 'dev'
+        required: true
+        type: string
 
 jobs:
   release-docker-image:
