@@ -4,13 +4,13 @@ on:
   push:
     branches:
       - docker
-  workflow_call:
-    inputs:
-      tag:
-        description: 'docker image tag'
-        default: 'dev'
-        required: true
-        type: string
+
+inputs:
+  tag:
+    description: 'docker image tag'
+    default: 'dev'
+    required: true
+    type: string
 
 jobs:
   release-docker-image:
