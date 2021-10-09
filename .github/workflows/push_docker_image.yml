@@ -14,8 +14,11 @@ jobs:
         image: [builder, style]
         include:
           - image: builder
-            context: docker/builder/
+            context: docker/builder
             file: docker/builder/Dockerfile
+          - image: style
+            context: docker/style
+            file: docker/style/Dockerfile
 
         
     runs-on: ubuntu-latest

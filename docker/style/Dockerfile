@@ -1,3 +1,3 @@
 FROM ubuntu:20.04
 
-echo "Hello Style"
+RUN echo "Hello Style"
