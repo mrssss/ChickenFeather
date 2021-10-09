@@ -1,4 +1,5 @@
-FROM ubuntu:20.04
+# docker build -t qniu/chicken-builder:latest .
+FROM ubuntu:20.04 
 
 ENV DEBIAN_FRONTEND=noninteractive LLVM_VERSION=13
 
@@ -55,6 +56,12 @@ RUN apt-get update \
         rename \
         tzdata \
         --yes --no-install-recommends
+
+# Install some library
+RUN apt-get update \
+    && apt-get install \
+        libpoco-dev \
+        libgtest-dev
 
 # This symlink required by gcc to find lld compiler
 RUN ln -s /usr/bin/lld-${LLVM_VERSION} /usr/bin/ld.lld

@@ -11,12 +11,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        image: [builder, style]
+        image: [chicken-builder, chicken-style]
         include:
-          - image: builder
+          - image: chicken-builder
             context: docker/builder
             file: docker/builder/Dockerfile
-          - image: style
+          - image: chicken-style
             context: docker/style
             file: docker/style/Dockerfile
 
