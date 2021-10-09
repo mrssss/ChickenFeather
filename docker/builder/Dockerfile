@@ -61,7 +61,8 @@ RUN apt-get update \
 RUN apt-get update \
     && apt-get install \
         libpoco-dev \
-        libgtest-dev
+        libgtest-dev \
+        --yes --no-install-recommends
 
 # This symlink required by gcc to find lld compiler
 RUN ln -s /usr/bin/lld-${LLVM_VERSION} /usr/bin/ld.lld
