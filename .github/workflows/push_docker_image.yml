@@ -1,15 +1,10 @@
 name: build docker image
 
 on:
-  [push, workflow_dispatch]:
+  push:
     branches:
       - docker
-    inputs:
-      tag:
-        description: 'docker image tag'
-        default: 'dev'
-        required: true
-        type: string
+
 
 jobs:
   release-docker-image:
@@ -44,7 +39,7 @@ jobs:
           context: ${{ matrix.context }}
           file: ${{ matrix.file }}
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ matrix.image }}:${{ inputs.tag }}
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ matrix.image }}:v0.1
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
