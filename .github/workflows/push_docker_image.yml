@@ -10,6 +10,7 @@ jobs:
   release-docker-image:
     strategy:
       fail-fast: false
+      max-parallel: 1
       matrix:
         image: [chicken-builder, chicken-style, chicken-unit-test]
         include:
