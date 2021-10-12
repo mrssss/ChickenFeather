@@ -1,0 +1,28 @@
+name: ci
+on: push
+
+jobs:
+  unit-test:
+    runs-on: ubuntu-latest
+    container:
+      image: qniu/chicken-unit-test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+      - name: List dir
+        run: ls -al
+      - name: ls poco 
+        run: ls -al third_party/poco
+      - name: List Workspace
+        run: pwd
+      - name: List env
+        run: env
+      - name: Run Tests
+        run: SRC=${GITHUB_WORKSPACE} /run.sh
+      - name: Upload Test Report
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-report
+          path: /test_output/*
