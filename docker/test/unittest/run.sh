@@ -7,7 +7,7 @@ function run_cmake
 
 function run_build
 {
-    cd /build && cmake --build .
+    cd /build && cmake --build . --target unit_tests
 }
 
 function run_unit_test
