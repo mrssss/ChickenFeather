@@ -10,17 +10,20 @@ jobs:
   release-docker-image:
     strategy:
       fail-fast: false
+      max-parallel: 1
       matrix:
-        image: [builder, style]
+        image: [chicken-builder, chicken-style, chicken-unit-test]
         include:
-          - image: builder
+          - image: chicken-builder
             context: docker/builder
             file: docker/builder/Dockerfile
-          - image: style
+          - image: chicken-style
             context: docker/style
             file: docker/style/Dockerfile
+          - image: chicken-unit-test
+            context: docker/test/unittest
+            file: docker/test/unittest/Dockerfile
 
-        
     runs-on: ubuntu-latest
     steps:
       - name: Check Out Repo
@@ -45,7 +48,7 @@ jobs:
           context: ${{ matrix.context }}
           file: ${{ matrix.file }}
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ matrix.image }}:v0.1
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ matrix.image }}:v0.1,${{ secrets.DOCKER_HUB_USERNAME }}/${{ matrix.image }}:latest
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
