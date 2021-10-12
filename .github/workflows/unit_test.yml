@@ -1,4 +1,4 @@
-name: ci
+name: unit-test
 on: push
 
 jobs:
@@ -11,14 +11,6 @@ jobs:
         uses: actions/checkout@v2
         with:
           submodules: true
-      - name: List dir
-        run: ls -al
-      - name: ls poco 
-        run: ls -al third_party/poco
-      - name: List Workspace
-        run: pwd
-      - name: List env
-        run: env
       - name: Run Tests
         run: SRC=${GITHUB_WORKSPACE} /run.sh
       - name: Upload Test Report
