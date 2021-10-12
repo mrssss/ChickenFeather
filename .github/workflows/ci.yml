@@ -10,7 +10,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          submodule: recursive
+          submodule: 'true'
       - name: List dir
         run: ls -al
       - name: ls poco 
