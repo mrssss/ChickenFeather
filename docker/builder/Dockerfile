@@ -66,11 +66,11 @@ RUN apt-get update \
 
 # This symlink required by gcc to find lld compiler
 RUN ln -s /usr/bin/lld-${LLVM_VERSION} /usr/bin/ld.lld
-RUN ln -s /usr/bin/lld-${LLVM_VERSION} /usr/bin/ld
 
 
 ENV CC=clang-${LLVM_VERSION}
 ENV CXX=clang++-${LLVM_VERSION}
+ENV LD=/usr/bin/ld.lld
 
 COPY build.sh /
 CMD ["bash", "-c", "/build.sh 2>&1 | ts"]
