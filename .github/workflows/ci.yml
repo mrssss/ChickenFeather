@@ -7,7 +7,7 @@ jobs:
     container:
       image: qniu/chicken-unit-test
       env:
-        SRC: ${{ github.action_path }}/chicken-feather
+        SRC: ${{ github.workspace }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -18,7 +18,7 @@ jobs:
       - name: List Workspace
         run: pwd
       - name: List env
-        run: env
+        run: export SRC=${GITHUB_WORKSPACE}
       - name: Run Tests
         run: /run.sh
       - name: Upload Test Report
