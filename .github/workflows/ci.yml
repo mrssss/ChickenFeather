@@ -6,8 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: qniu/chicken-unit-test
-      env:
-        SRC: ${{ github.workspace }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -18,9 +16,9 @@ jobs:
       - name: List Workspace
         run: pwd
       - name: List env
-        run: export SRC=${GITHUB_WORKSPACE}
+        run: env
       - name: Run Tests
-        run: /run.sh
+        run: SRC=${GITHUB_WORKSPACE} /run.sh
       - name: Upload Test Report
         uses: actions/upload-artifact@v2
         with:
