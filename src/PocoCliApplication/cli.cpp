@@ -20,6 +20,7 @@
 //! * 当应用初始化完成，它的所有的注册过的子系统也就初始化完成了
 //! * 当应用关闭，其子系统也关闭
 #include <iostream>
+#include <memory>
 
 #include "CliApplication.h"
 
