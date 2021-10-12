@@ -8,9 +8,9 @@ jobs:
       image: qniu/chicken-unit-test
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
         with:
-          submodule: true
+          submodules: true
       - name: List dir
         run: ls -al
       - name: ls poco 
