@@ -66,6 +66,7 @@ RUN apt-get update \
 
 # This symlink required by gcc to find lld compiler
 RUN ln -s /usr/bin/lld-${LLVM_VERSION} /usr/bin/ld.lld
+RUN ln -s /usr/bin/lld-${LLVM_VERSION} /usr/bin/ld
 
 
 ENV CC=clang-${LLVM_VERSION}
