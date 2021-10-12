@@ -12,8 +12,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          path: ${{ github.workspace }}/chicken-feather
+          path: chicken-feather
           submodule: recursive
+      - name: List dir
+        run: ls -al
+      - name: List Workspace
+        run: ls -al ${{ github.workspace }}
+      - name: List env
+        run: env
       - name: Run Tests
         run: /run.sh
       - name: Upload Test Report
