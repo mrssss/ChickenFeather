@@ -7,7 +7,7 @@ jobs:
     container:
       image: qniu/chicken-unit-test
       env:
-        SRC: ${{ github.workspace }}/chicken-feather
+        SRC: ${{ github.action_path }}/chicken-feather
     steps:
       - name: Checkout
         uses: actions/checkout@v2
