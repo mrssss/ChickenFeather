@@ -17,7 +17,7 @@ jobs:
       - name: List dir
         run: ls -al
       - name: List Workspace
-        run: ls -al ${{ github.workspace }}
+        run: pwd
       - name: List env
         run: env
       - name: Run Tests
