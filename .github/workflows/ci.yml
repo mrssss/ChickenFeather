@@ -7,11 +7,12 @@ jobs:
     container:
       image: qniu/chicken-unit-test
       env:
-        SRC: ${{ github.workspace }}
+        SRC: ${{ github.workspace }}/chicken-feather
     steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
+          path: ${{ github.workspace }}/chicken-feather
           submodule: recursive
       - name: Run Tests
         run: /run.sh
