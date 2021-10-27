@@ -2,7 +2,7 @@ name: do-the-job
 on: push
 jobs:
   run_test:
-    uses: mrssss/run-test-action/action.yml@main
+    uses: mrssss/run-test-action/.github/workflows/action.yml@main
     with:
       dockerfile: docker/test/unittest/Dockerfile
       context-directory: docker/test/unittest/
