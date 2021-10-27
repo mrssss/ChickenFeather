@@ -1,7 +1,7 @@
-name: do-the-job
+name: unit test
 on: push
 jobs:
-  run_test:
+  unit_test:
     uses: mrssss/run-test-action/.github/workflows/action.yml@main
     with:
       dockerfile: docker/test/unittest/Dockerfile
