@@ -1,4 +1,7 @@
-find_package(GTest REQUIRED)
+find_package(GTest REQUIRED
+                gtest
+                gtest_main
+)
 
 if(GTest_FOUND)
     message(STATUS "Use system gtest library")
