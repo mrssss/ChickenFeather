@@ -2,7 +2,7 @@
 
 function run_cmake 
 {
-    mkdir /build && cd /build && cmake $SRC
+    mkdir /build && cd /build && cmake /source
 }
 
 function run_build
@@ -17,8 +17,7 @@ function run_unit_test
 
 function generate_report
 {
-    mkdir -p /test_output
-    xsltproc $SRC/utils/gtest2html/gtest2html.xslt result.xml > /test_output/result.html
+    xsltproc /source/utils/gtest2html/gtest2html.xslt result.xml > /test_output/result.html
 }
 
 run_cmake
