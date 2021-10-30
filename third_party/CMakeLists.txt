@@ -1,3 +1,5 @@
+project (third_party)
+
 find_package(GTest REQUIRED
                 gtest
                 gtest_main
@@ -6,23 +8,12 @@ find_package(GTest REQUIRED
 if(GTest_FOUND)
     message(STATUS "Use system gtest library")
     enable_testing()
-    include_directories(${GTEST_INCLUDE_DIRS})
+    set_target_properties (GTest::gtest
+                           GTest::gtest_main
+        PROPERTIES IMPORTED_GLOBAL TRUE
+    )
 else()
     message(STATUS "Use gtest from source")
-    include(third_party/cmake-scripts/googletest.cmake)
-endif()
-
-
-find_package(Poco REQUIRED 
-                Foundation
-                Util
-)
-
-if(Poco_FOUND)
-    message(STATUS "Use system poco library")
     enable_testing()
-    include_directories(${POCO_INCLUDE_DIRS})
-else()
-    message(STATUS "Use poco from source")
-    include(third_party/cmake-scripts/poco.cmake)
+    add_subdirectory(googletest)
 endif()

@@ -12,7 +12,7 @@ function run_build
 
 function run_unit_test
 {
-    cd /build && ./unit_tests --gtest_output=xml:result.xml
+    cd /build && ./tests/unit_tests --gtest_output=xml:result.xml
 }
 
 function generate_report

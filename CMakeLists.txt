@@ -1,31 +1,18 @@
-cmake_minimum_required(VERSION 3.10)
+project(ChickenFeather)
 
-project("ChickenFeather")
-SET (CMAKE_CXX_STANDARD 17)
-SET (CMAKE_LINKER  "/usr/bin/ld.lld")
-SET (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
+# Global setup
+cmake_minimum_required(VERSION 3.19)
 
-message(STATUS "CMAKE_SOURCE_DIR: ${CMAKE_SOURCE_DIR}")
+set (CMAKE_CXX_STANDARD 17)
 
-include (third_party/CMakeLists.txt)
-
-include_directories (src)
-
-add_subdirectory (src)
-
-# Add unit test
-macro (grep_gtest_sources BASE_DIR DST_VAR)
-    message(STATUS "grep_gtest_sources(${BASE_DIR} ${DST_VAR})")
-    file (GLOB_RECURSE "${DST_VAR}" RELATIVE "${BASE_DIR}" "gtest*.cpp")
-endmacro()
-
-grep_gtest_sources("${CMAKE_SOURCE_DIR}" unit_test_sources)
-
-if (unit_test_sources)
-    message(STATUS "Found unit test")
-    add_executable(unit_tests ${unit_test_sources})
-    target_link_libraries( unit_tests gtest gtest_main cal)
-    add_test( unit_tests unit_tests )
+if(MSVC)
+    add_compile_options(/W3 /WX)
 else()
-    message(STATUS "Not found unit test")
+    set (CMAKE_LINKER  "/usr/bin/ld.lld")
+    add_compile_options(-W -Wall -Werror -pthread)
 endif()
+
+add_subdirectory (lib)
+add_subdirectory (app)
+add_subdirectory (tests)
+add_subdirectory (third_party)
