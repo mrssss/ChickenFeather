@@ -62,6 +62,7 @@ RUN apt-get update \
     && apt-get install \
         libpoco-dev \
         libgtest-dev \
+        libbenchmark-dev \
         --yes --no-install-recommends
 
 # This symlink required by gcc to find lld compiler
