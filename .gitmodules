@@ -4,3 +4,6 @@
 [submodule "third_party/poco"]
 	path = third_party/poco
 	url = https://github.com/pocoproject/poco.git
+[submodule "third_party/benchmark"]
+	path = third_party/benchmark
+	url = https://github.com/google/benchmark.git
