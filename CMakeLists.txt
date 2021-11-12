@@ -8,7 +8,6 @@ set (CMAKE_CXX_STANDARD 17)
 if(MSVC)
     add_compile_options(/W3 /WX)
 else()
-    set (CMAKE_LINKER  "/usr/bin/ld.lld")
     add_compile_options(-W -Wall -Werror -pthread)
 endif()
 

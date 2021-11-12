@@ -50,3 +50,8 @@ add_executable (basic_smart_pointer_example
     basic/smart_pointer.cpp
 )
 target_link_libraries (basic_smart_pointer_example PRIVATE basic::smart_pointer)
+
+add_executable (rocksdb_example
+    rocksdb/rocksdb_example.cpp
+)
+target_link_libraries (rocksdb_example PRIVATE rocksdb)
